@@ -1,0 +1,58 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <href=></href>
+    <link rel="stylesheet" href="main.css">
+    <title>Document</title>
+</head>
+<body> 
+    <header class="header">
+        <div class="appName">Bazar do Pedro</div>
+      </header>
+
+      <div id="screen1" class="hidden1">           
+          <div class="container" type="text" id="listProducts">                  
+        <script src="Service/ProductService.js"></script>   
+            <div class="card">
+              <button id="btnAdic" class="button primary addbuton">
+                ADD PRODUCT
+              </button>
+            </div>
+          </div>  
+      </div>
+
+        <div id="screen2" class="component hidden1">
+            
+                <div class="componentHeader">
+                  <h1 class="componentTitle">New Product</h1>
+                </div>
+                <div class="componentContent">
+                  <div class="field">
+                    <label for="inputName">Name:</label>
+                    <input id="inputName" type="text" autocomplete="off" />
+                  </div>
+                  <div class="field">
+                    <label for="inputPrice">Price:</label>
+                    <input id="inputPrice" type="text" autocomplete="off" />
+                  </div>
+                  <div class="field">
+                    <label for="inputInfo">Info:</label>
+                    <input id="inputInfo" type="text" autocomplete="off" />
+                  </div>
+                  <div class="field">
+                    <label for="inputUrlImage">URL image:</label>
+                    <input id="inputUrlImage" type="text" autocomplete="off" />
+                  </div>
+                  <div class="buttonGroup mt1 end">
+                    <button id="btnCanc1" class="button quarter light">Cancel</button>
+                    <button id="btnInc" class="button quarter primary" onclick="AddProduct()">
+                      ADD
+                    </button>
+                  </div>
+                </div>
+              
+        </div>
+</body>
+</html>
