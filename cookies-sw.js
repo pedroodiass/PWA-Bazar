@@ -2,7 +2,7 @@ var cacheName = "cookies-v1.0";
 
 self.addEventListener("install", function (event) {
   caches.open(cacheName).then((cache) => {
-    cache.addAll(["/", "/index.html", "/tesi.css", "/tesi.js"]);
+    cache.addAll(["./", "./index.html", "./tesi.css", "./tesi.js"]);
   });
 });
 

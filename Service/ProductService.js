@@ -1,20 +1,29 @@
 var products = [];
 
-function GetProducts() {
-  return this.products;
-}
+var screen2 = document.getElementById("screen2");
+var screen1 = document.getElementById("screen1");
 
-function arrayRemove(arr, value) {
-  return arr.filter(function (ele) {
-    return ele != value;
-  });
-}
+onload = () => {
+  const t = JSON.parse(localStorage.getItem("products"));
+  if (t) products = t;
+  render(products);
+  ShowScreen1();
+};
 
 function RemoveProduct(ID) {
   products = products.filter((t) => t.ID != ID);
-  console.log("entrou");
   SaveProducts();
   render(products);
+}
+
+function ShowScreen2() {
+  screen2.classList.remove("hidden");
+  screen1.classList.add("hidden");
+}
+
+function ShowScreen1() {
+  screen1.classList.remove("hidden");
+  screen2.classList.add("hidden");
 }
 
 function AddProduct() {
@@ -37,16 +46,12 @@ function AddProduct() {
 
   SaveProducts();
   render(products);
+  ShowScreen1();
 }
 
 var listProducts = document.querySelector("#listProducts");
 
 function render(products) {
-  const t = JSON.parse(localStorage.getItem("products"));
-  if (t) products = t;
-
-  SaveProducts();
-
   let list = "";
   console.log(products);
   if (Array.isArray(products)) {
@@ -73,6 +78,14 @@ const SaveProducts = () => {
   localStorage.setItem("products", JSON.stringify(products));
 };
 
-render(products);
-
-navigator.serviceWorker.register("/cookies-sw.js");
+navigator.serviceWorker.register("./cookies-sw.js").then(
+  function (reg) {
+    console.log(
+      "ServiceWorker registration successful with scope: ",
+      registration.scope
+    );
+  },
+  function (err) {
+    console.log("ServiceWorker registration failed: ", err);
+  }
+);
